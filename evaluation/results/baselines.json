@@ -1,0 +1,39 @@
+{
+  "test_size": 6621,
+  "baselines": {
+    "tfidf_lr": {
+      "precision": 0.9805,
+      "recall": 0.9049,
+      "f1": 0.9412,
+      "fpr": 0.005528,
+      "mean_ms_per_email": 0.0463,
+      "train_samples": 26484
+    },
+    "tfidf_svm": {
+      "precision": 0.9866,
+      "recall": 0.9467,
+      "f1": 0.9662,
+      "fpr": 0.003949,
+      "mean_ms_per_email": 0.0418,
+      "train_samples": 26484
+    },
+    "onnx_nonstaged": {
+      "precision": 0.9866,
+      "recall": 0.9916,
+      "f1": 0.9891,
+      "fpr": 0.004146,
+      "mean_ms_per_email": 44.8289,
+      "threshold": 0.25,
+      "note": "phish_binary.onnx, all emails run through, no staging gate"
+    }
+  },
+  "phishguard_staged": {
+    "precision": 0.9866,
+    "recall": 0.9916,
+    "f1": 0.9891,
+    "fpr": 0.0041,
+    "threshold": 0.25,
+    "mean_ms_stage1": 46.207,
+    "note": "from binary_eval_v2.json \u2014 included for comparison"
+  }
+}

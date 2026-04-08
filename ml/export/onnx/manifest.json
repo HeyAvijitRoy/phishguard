@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "generated": "2026-03-22T21:23:37.635518Z",
+  "models": {
+    "phish_binary": {
+      "file": "phish_binary.onnx",
+      "sha256": "e0b8970aa11ea7cbed718d8c0e01fa8851d1bb97bdbf73c2223d7ddcfb5b38cf",
+      "size_bytes": 267932171
+    },
+    "phish_intent": {
+      "file": "phish_intent.onnx",
+      "sha256": "260ae858c5c5067954ba402fded0d32efdfc845a8cfb1821ca053de5857c1f0c",
+      "size_bytes": 267938323
+    }
+  }
+}

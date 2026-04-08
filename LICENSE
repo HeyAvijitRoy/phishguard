@@ -1,0 +1,58 @@
+Copyright (c) 2026 The PhishGuard Authors. All rights reserved.
+
+A provisional patent application covering portions of this system has been
+filed. This license governs access to the artifact bundle made available
+for peer review. It does not constitute a grant of any patent rights.
+
+---
+
+ARTIFACT REVIEW LICENSE
+
+Permission is granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"),
+to use the Software solely for the purposes of:
+
+  (a) evaluating the scientific claims of the associated research
+      submission during the peer review process;
+
+  (b) reproducing the experimental results described in the paper for
+      the purpose of verification; and
+
+  (c) personal, non-commercial academic research.
+
+The following restrictions apply:
+
+  1. The Software may not be used, in whole or in part, to build,
+     deploy, or distribute a commercial product or service without
+     the prior written permission of the copyright holders.
+
+  2. The Software may not be sublicensed, sold, or transferred to
+     any third party.
+
+  3. Redistributions of the Software, in source or binary form, must
+     retain this copyright notice, this list of conditions, and the
+     following disclaimer.
+
+  4. Nothing in this license grants any rights under any patent,
+     patent application, or patent pending covering the methods,
+     systems, or architectures described in the associated research.
+     All patent rights are expressly reserved by the copyright holders.
+
+  5. The name "PhishGuard" and the names of the authors may not be
+     used to endorse or promote products derived from this Software
+     without prior written permission.
+
+DISCLAIMER
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---
+
+For licensing inquiries beyond the scope of artifact review, contact
+the authors via the contact information provided in the final published paper.

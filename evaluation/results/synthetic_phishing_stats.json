@@ -1,0 +1,14 @@
+{
+  "total_records": 200,
+  "by_intent": {
+    "credential_harvesting": 50,
+    "payment_fraud": 50,
+    "threat_language": 50,
+    "impersonation": 50
+  },
+  "by_model": {
+    "chatgpt-5.2instant": 200
+  },
+  "validation_errors": [],
+  "output_file": "ml\\data_raw\\synthetic_phishing\\synthetic_phishing_200.jsonl"
+}

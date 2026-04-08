@@ -1,0 +1,51 @@
+.DS_Store
+Thumbs.db
+
+# Editor and workspace settings
+.vscode/
+.idea/
+*.code-workspace
+
+# Node / TypeScript add-in
+addin/node_modules/
+addin/dist/
+addin/.webpack/
+addin/.turbo/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+addin/public/models/*.json
+addin/public/models/*.onnx
+addin/public/models/vocab.txt
+
+# Python virtual environments and caches
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.ipynb_checkpoints/
+
+# Local build and temp outputs
+build/
+dist/
+tmp/
+temp/
+*.tmp
+*.log
+
+addin/package-lock.json
+
+audit.md

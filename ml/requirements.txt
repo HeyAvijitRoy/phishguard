@@ -1,0 +1,12 @@
+torch
+transformers
+datasets
+accelerate
+optimum[onnxruntime]
+onnxruntime
+numpy
+tokenizers
+scikit-learn
+matplotlib
+seaborn
+pandas

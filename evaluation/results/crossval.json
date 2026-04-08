@@ -1,0 +1,59 @@
+{
+  "n_folds": 5,
+  "threshold": 0.25,
+  "model": "phish_binary.onnx",
+  "per_fold": [
+    {
+      "fold": 1,
+      "precision": 0.9859,
+      "recall": 0.9904,
+      "f1": 0.9881,
+      "fpr": 0.004344,
+      "n_samples": 6621
+    },
+    {
+      "fold": 2,
+      "precision": 0.9878,
+      "recall": 0.9859,
+      "f1": 0.9868,
+      "fpr": 0.003751,
+      "n_samples": 6621
+    },
+    {
+      "fold": 3,
+      "precision": 0.9866,
+      "recall": 0.9923,
+      "f1": 0.9894,
+      "fpr": 0.004146,
+      "n_samples": 6621
+    },
+    {
+      "fold": 4,
+      "precision": 0.9879,
+      "recall": 0.9929,
+      "f1": 0.9904,
+      "fpr": 0.003751,
+      "n_samples": 6621
+    },
+    {
+      "fold": 5,
+      "precision": 0.9929,
+      "recall": 0.9936,
+      "f1": 0.9933,
+      "fpr": 0.002172,
+      "n_samples": 6621
+    }
+  ],
+  "mean": {
+    "precision": 0.9882,
+    "recall": 0.991,
+    "f1": 0.9896,
+    "fpr": 0.0036
+  },
+  "std": {
+    "precision": 0.0025,
+    "recall": 0.0028,
+    "f1": 0.0022,
+    "fpr": 0.0008
+  }
+}

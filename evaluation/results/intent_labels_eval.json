@@ -1,0 +1,83 @@
+{
+  "model": "phish_intent.onnx",
+  "threshold": 0.5,
+  "phish_only_eval": {
+    "n_phishing_samples": 1556,
+    "labels": [
+      "credential_harvesting",
+      "payment_fraud",
+      "threat_language",
+      "impersonation"
+    ],
+    "per_label": {
+      "credential_harvesting": {
+        "precision": 0.5333,
+        "recall": 0.2857,
+        "f1": 0.3721,
+        "support": 28
+      },
+      "payment_fraud": {
+        "precision": 0.955,
+        "recall": 0.8724,
+        "f1": 0.9118,
+        "support": 243
+      },
+      "threat_language": {
+        "precision": 0.6,
+        "recall": 0.1364,
+        "f1": 0.2222,
+        "support": 22
+      },
+      "impersonation": {
+        "precision": 1.0,
+        "recall": 0.3182,
+        "f1": 0.4828,
+        "support": 22
+      }
+    },
+    "micro_avg": {
+      "precision": 0.9237,
+      "recall": 0.7302,
+      "f1": 0.8156
+    },
+    "macro_avg": {
+      "precision": 0.7721,
+      "recall": 0.4032,
+      "f1": 0.4972
+    },
+    "label_cooccurrence": [
+      [
+        15,
+        7,
+        5,
+        0
+      ],
+      [
+        7,
+        222,
+        3,
+        7
+      ],
+      [
+        5,
+        3,
+        5,
+        0
+      ],
+      [
+        0,
+        7,
+        0,
+        7
+      ]
+    ]
+  },
+  "ham_fpr_per_label": {
+    "credential_harvesting": 0.0,
+    "payment_fraud": 0.000197,
+    "threat_language": 0.0,
+    "impersonation": 0.0
+  },
+  "label_methodology": "keyword-derived weak labels via build_dataset.py:weak_label_intents",
+  "ham_label_note": "Ham emails receive all-zero intent labels by construction \u2014 ham FPR measured empirically"
+}

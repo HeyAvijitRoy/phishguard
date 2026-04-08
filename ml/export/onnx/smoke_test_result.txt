@@ -1,0 +1,6 @@
+timestamp: 2026-03-22T21:22:20.386390Z
+test_text: Urgent: Your account will be suspended. Click here to verify your password now.
+max_prob: 0.8357
+all_4_probs: [0.8357, 0.3423, 0.5193, 0.0885]
+labeled: credential=0.8357, payment=0.3423, threat=0.5193, impersonation=0.0885
+status: PASS

@@ -1,0 +1,286 @@
+{
+  "synthetic_phishing_evaluation": {
+    "total_samples": 200,
+    "generation_model": "chatgpt-5.2instant",
+    "at_tau_0.25": {
+      "detected": 165,
+      "missed": 35,
+      "detection_rate": 0.825,
+      "attack_success_rate": 0.175
+    },
+    "at_tau_0.90": {
+      "detected": 149,
+      "missed": 51,
+      "detection_rate": 0.745,
+      "attack_success_rate": 0.255
+    }
+  },
+  "by_intent_category": {
+    "credential_harvesting": {
+      "at_tau_0.25": {
+        "detected": 44,
+        "missed": 6,
+        "detection_rate": 0.88
+      },
+      "at_tau_0.90": {
+        "detected": 41,
+        "missed": 9,
+        "detection_rate": 0.82
+      }
+    },
+    "payment_fraud": {
+      "at_tau_0.25": {
+        "detected": 46,
+        "missed": 4,
+        "detection_rate": 0.92
+      },
+      "at_tau_0.90": {
+        "detected": 44,
+        "missed": 6,
+        "detection_rate": 0.88
+      }
+    },
+    "threat_language": {
+      "at_tau_0.25": {
+        "detected": 50,
+        "missed": 0,
+        "detection_rate": 1.0
+      },
+      "at_tau_0.90": {
+        "detected": 49,
+        "missed": 1,
+        "detection_rate": 0.98
+      }
+    },
+    "impersonation": {
+      "at_tau_0.25": {
+        "detected": 25,
+        "missed": 25,
+        "detection_rate": 0.5
+      },
+      "at_tau_0.90": {
+        "detected": 15,
+        "missed": 35,
+        "detection_rate": 0.3
+      }
+    }
+  },
+  "missed_emails_at_tau_0.25": [
+    {
+      "id": "synth_imp_006",
+      "phish_prob": 0.2166,
+      "intent": "impersonation",
+      "body_preview": "Hello,\n\nAs part of your annual performance evaluation, please log in to the HR portal and complete the self-assessment form by tonight.\n\nI\u00e2\u20ac\u2122m out of office but monitoring email. Do not call as I\u00e2\u20ac\u2122m "
+    },
+    {
+      "id": "synth_cred_003",
+      "phish_prob": 0.137,
+      "intent": "credential_harvesting",
+      "body_preview": "Hi Team Member,\n\nAs part of our quarterly security upgrade, all staff must re-enroll in Multi-Factor Authentication. Your current session token has expired.\n\nTo complete enrollment, log in with your c"
+    },
+    {
+      "id": "synth_imp_034",
+      "phish_prob": 0.1209,
+      "intent": "impersonation",
+      "body_preview": "Dear Operations Team,\n\nThis is a reminder that your Managed IT Services agreement with IronClad MSP (Ref 2026-441) expires at the end of this month.\n\nPlease log in to our customer portal to review upd"
+    },
+    {
+      "id": "synth_imp_029",
+      "phish_prob": 0.0607,
+      "intent": "impersonation",
+      "body_preview": "Dear Contracts Department,\n\nAs your insurance broker for the upcoming vendor renewal cycle, SilverLine Risk Advisors has updated your Certificate of Insurance under Policy GL-90231-AX.\n\nPlease access "
+    },
+    {
+      "id": "synth_pay_013",
+      "phish_prob": 0.0527,
+      "intent": "payment_fraud",
+      "body_preview": "As we close the quarter, we must release the advance payment discussed earlier.\n\nAmount: $210,400\nBank: Summit Ridge Bank\nRouting: 021-44587\nAccount: 7623459081\n\nPlease handle today to meet reporting "
+    },
+    {
+      "id": "synth_imp_040",
+      "phish_prob": 0.047,
+      "intent": "impersonation",
+      "body_preview": "Dear Risk Management Team,\n\nYour cyber liability policy CL-20871 is due for renewal. Attached is the preliminary quote from GraniteShield Insurance Brokers.\n\nPlease access our broker portal to review "
+    },
+    {
+      "id": "synth_imp_021",
+      "phish_prob": 0.0412,
+      "intent": "impersonation",
+      "body_preview": "Hello,\n\nAs part of our data retention compliance process, you are required to confirm your access credentials and archive confirmation via the secure portal.\n\nPlease do not call IT as this is a restri"
+    },
+    {
+      "id": "synth_pay_002",
+      "phish_prob": 0.0327,
+      "intent": "payment_fraud",
+      "body_preview": "Dear Accounts Payable Team,\n\nPlease note that we have transitioned to a new banking partner due to an internal restructuring. All outstanding and future payments must be directed to the updated accoun"
+    },
+    {
+      "id": "synth_imp_002",
+      "phish_prob": 0.0319,
+      "intent": "impersonation",
+      "body_preview": "Hello,\n\nWe are finalizing quarterly payroll adjustments and I need you to review and complete the attached salary confirmation form. Please submit it before 3 PM to avoid delays in next week\u00e2\u20ac\u2122s payme"
+    },
+    {
+      "id": "synth_cred_015",
+      "phish_prob": 0.0296,
+      "intent": "credential_harvesting",
+      "body_preview": "Dear Account Holder,\n\nA billing discrepancy was detected on your Microsoft 365 subscription under example-corp.com.\n\nPlease confirm your login details to review billing:\nhttps://billing-review.example"
+    },
+    {
+      "id": "synth_imp_043",
+      "phish_prob": 0.0229,
+      "intent": "impersonation",
+      "body_preview": "Dear Program Manager,\n\nUnder Contract GC-8820 with the Federal Infrastructure Alliance, we require updated compliance documentation.\n\nPlease log into our contractor compliance portal to upload the rev"
+    },
+    {
+      "id": "synth_imp_018",
+      "phish_prob": 0.0182,
+      "intent": "impersonation",
+      "body_preview": "Hi Team,\n\nPlease acknowledge the updated remote work policy by signing into the employee portal below and confirming your agreement.\n\nOur HR helpline is temporarily suspended, so email confirmation on"
+    },
+    {
+      "id": "synth_imp_009",
+      "phish_prob": 0.0154,
+      "intent": "impersonation",
+      "body_preview": "Team,\n\nWe\u00e2\u20ac\u2122ve detected unusual activity on the shared drive used for the Polaris project. Access has been temporarily restricted. Please verify your credentials via the secure IT link below to restor"
+    },
+    {
+      "id": "synth_pay_005",
+      "phish_prob": 0.0149,
+      "intent": "payment_fraud",
+      "body_preview": "Hello,\n\nDue to a payroll system upgrade, my direct deposit information has changed. Please update my salary deposit account before the next cycle.\n\nBank: Harbor State Credit\nRouting: 021-77520\nAccount"
+    },
+    {
+      "id": "synth_imp_027",
+      "phish_prob": 0.0149,
+      "intent": "impersonation",
+      "body_preview": "Hello Finance Team,\n\nAs part of the FY2026 external audit for Northbridge Analytics Inc., our firm, Corvin & Stroud Auditors, requires confirmation of accounts payable balances under Audit Reference A"
+    },
+    {
+      "id": "synth_imp_007",
+      "phish_prob": 0.009,
+      "intent": "impersonation",
+      "body_preview": "Hi,\n\nDue to recent policy updates, all employees must reconfirm their benefits enrollment selections through the link below before Friday.\n\nPlease do this discreetly. Our call center is currently over"
+    },
+    {
+      "id": "synth_imp_033",
+      "phish_prob": 0.0086,
+      "intent": "impersonation",
+      "body_preview": "Dear Compliance Officer,\n\nOur firm, Bellmont & Greene Regulatory Advisors, is finalizing your annual regulatory submission under Case ID RF-55019.\n\nWe require confirmation of the attached compliance q"
+    },
+    {
+      "id": "synth_imp_050",
+      "phish_prob": 0.008,
+      "intent": "impersonation",
+      "body_preview": "Dear Executive Team,\n\nIn preparation for our annual strategic partnership review under Ref SPR-0092, we have compiled a performance summary for your review.\n\nPlease access the secure partner portal to"
+    },
+    {
+      "id": "synth_imp_020",
+      "phish_prob": 0.0079,
+      "intent": "impersonation",
+      "body_preview": "Good morning,\n\nThere appears to be a discrepancy in last month\u00e2\u20ac\u2122s vendor invoice for the Nova system upgrade. Please review the attached document and confirm the corrected payment amount.\n\nI\u00e2\u20ac\u2122m in a"
+    },
+    {
+      "id": "synth_imp_017",
+      "phish_prob": 0.0074,
+      "intent": "impersonation",
+      "body_preview": "Hello,\n\nBefore finalizing bonus allocations, I need confirmation of your department\u00e2\u20ac\u2122s performance summary. Please upload the document through the internal portal link provided.\n\nI\u00e2\u20ac\u2122m offsite today "
+    },
+    {
+      "id": "synth_imp_024",
+      "phish_prob": 0.0068,
+      "intent": "impersonation",
+      "body_preview": "Hi,\n\nWe are updating compensation records for the upcoming fiscal year. Please confirm your salary adjustment form through the HR portal link provided.\n\nDo not call as I am attending an offsite strate"
+    },
+    {
+      "id": "synth_imp_045",
+      "phish_prob": 0.0056,
+      "intent": "impersonation",
+      "body_preview": "Dear HR Director,\n\nAs your external benefits administrator, we have updated enrollment terms under Plan EB-9011.\n\nPlease authenticate in our benefits management portal to review participant data and c"
+    },
+    {
+      "id": "synth_cred_001",
+      "phish_prob": 0.0054,
+      "intent": "credential_harvesting",
+      "body_preview": "Dear User,\n\nOur records indicate that your Microsoft 365 password for example-corp.com is scheduled to expire today at 11:59 PM. To avoid disruption to email and Teams access, please confirm your cred"
+    },
+    {
+      "id": "synth_pay_024",
+      "phish_prob": 0.0054,
+      "intent": "payment_fraud",
+      "body_preview": "Due to internal banking adjustments, please update the executive payroll deposit account.\n\nBank: Sterling Crest Bank\nRouting: 021-92041\nAccount: 9045612387\n\nThis must reflect before tomorrow\u00e2\u20ac\u2122s payro"
+    },
+    {
+      "id": "synth_imp_048",
+      "phish_prob": 0.0047,
+      "intent": "impersonation",
+      "body_preview": "Dear Finance Department,\n\nPlease review the revised invoice INV-22018 for the Atlas Modernization Project.\n\nAn adjustment was made to line items per our last project steering meeting. Kindly confirm t"
+    },
+    {
+      "id": "synth_cred_021",
+      "phish_prob": 0.0038,
+      "intent": "credential_harvesting",
+      "body_preview": "Hello,\n\nWe are migrating accounts to a new Google Workspace environment. Please sign in to confirm your account transfer.\n\nMigration portal:\nhttps://workspace-move.fakeitdept.net/confirm\n\nMigration cl"
+    },
+    {
+      "id": "synth_cred_005",
+      "phish_prob": 0.0027,
+      "intent": "credential_harvesting",
+      "body_preview": "Hello,\n\nWe have updated our acceptable use policy for Google Workspace accounts under example-corp.com. A quick sign-in confirmation is required to acknowledge compliance.\n\nPlease access the secure fo"
+    },
+    {
+      "id": "synth_imp_038",
+      "phish_prob": 0.0026,
+      "intent": "impersonation",
+      "body_preview": "Dear Finance Systems Team,\n\nAs part of the payroll system upgrade for your Meridian ERP integration, we require administrator validation under Ref PI-6619.\n\nPlease log in to our integration dashboard "
+    },
+    {
+      "id": "synth_cred_008",
+      "phish_prob": 0.0023,
+      "intent": "credential_harvesting",
+      "body_preview": "Hello,\n\nA shared Microsoft 365 document requires your sign-in to restore access permissions. You may have been removed during a recent sync update.\n\nPlease authenticate here to regain access:\nhttps://"
+    },
+    {
+      "id": "synth_imp_016",
+      "phish_prob": 0.002,
+      "intent": "impersonation",
+      "body_preview": "Hi,\n\nWe are preparing materials for a confidential acquisition announcement. I need you to review the draft press release attached and provide feedback within the hour.\n\nDo not discuss this with anyon"
+    },
+    {
+      "id": "synth_imp_032",
+      "phish_prob": 0.002,
+      "intent": "impersonation",
+      "body_preview": "Dear CIO Office,\n\nAs discussed during our kickoff meeting for the Delta security review, the preliminary assessment report (Ref SA-2026-Delta) is now available.\n\nFor confidentiality reasons, reports a"
+    },
+    {
+      "id": "synth_imp_003",
+      "phish_prob": 0.0017,
+      "intent": "impersonation",
+      "body_preview": "Team,\n\nIT has identified a critical vulnerability in the remote VPN client. You must log in to the security portal below and install the required patch before end of day.\n\nI am in a network outage win"
+    },
+    {
+      "id": "synth_imp_026",
+      "phish_prob": 0.0014,
+      "intent": "impersonation",
+      "body_preview": "Dear Procurement Team,\n\nFollowing our call last Thursday regarding Project Falcon, please find the revised Master Services Agreement prepared by Halberg & Myles LLP (Ref: MSA-88421-FAL). Our records s"
+    },
+    {
+      "id": "synth_imp_011",
+      "phish_prob": 0.0012,
+      "intent": "impersonation",
+      "body_preview": "Hello,\n\nPlease review the revised Q4 forecast spreadsheet attached and approve the updated revenue projections before the finance call.\n\nI\u00e2\u20ac\u2122m boarding a flight and won\u00e2\u20ac\u2122t have cell service. Just rep"
+    },
+    {
+      "id": "synth_imp_004",
+      "phish_prob": 0.0007,
+      "intent": "impersonation",
+      "body_preview": "Hi,\n\nI need you to urgently review the attached contract draft for the Orion expansion project. The client expects revisions within the hour.\n\nI\u00e2\u20ac\u2122m tied up in negotiations and can\u00e2\u20ac\u2122t step away for c"
+    }
+  ],
+  "comparison_to_corpus": {
+    "corpus_recall_at_tau_0.25": 0.9916,
+    "synthetic_detection_rate_at_tau_0.25": 0.825,
+    "delta": -0.1666,
+    "interpretation": "LLM-generated phishing shows significant evasion. Adversarial training on synthetic data is recommended before deployment."
+  }
+}

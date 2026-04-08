@@ -1,0 +1,365 @@
+[
+    {
+        "id": "synth_pay_001",
+        "subject": "Urgent: Wire Needed for Confidential Acquisition",
+        "body": "Hi,\n\nI need you to process a confidential wire transfer today in connection with a time-sensitive acquisition. The board has approved the initial deposit, and this must be completed before 3:00 PM to avoid penalties.\n\nPlease wire $248,750 to the following account immediately:\nBank: First Harbor Trust\nRouting: 021-48392\nAccount: 7784501293\n\nThis transaction is strictly confidential. Do not discuss with anyone else until I confirm receipt.",
+        "from_display": "Daniel Mercer, CEO",
+        "from_email": "[d.mercer@northbrdge-holdings.net](mailto:d.mercer@northbrdge-holdings.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "authority_impersonation",
+            "urgency",
+            "confidentiality",
+            "wire_request"
+        ],
+        "notes": "CEO impersonation requesting urgent confidential acquisition wire."
+    },
+    {
+        "id": "synth_pay_002",
+        "subject": "Updated Banking Details for March Invoices",
+        "body": "Dear Accounts Payable Team,\n\nPlease note that we have transitioned to a new banking partner due to an internal restructuring. All outstanding and future payments must be directed to the updated account below.\n\nBank: Summit Valley Bank\nRouting: 021-57284\nAccount: 5567829014\n\nKindly confirm once the March invoice totaling $18,940 has been processed using these new details.",
+        "from_display": "Lena Ortiz, Billing Dept.",
+        "from_email": "[billing@alderon-supplles.com](mailto:billing@alderon-supplles.com)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "vendor_impersonation",
+            "account_change_request",
+            "invoice_reference",
+            "lookalike_domain"
+        ],
+        "notes": "Vendor bank detail update using lookalike domain."
+    },
+    {
+        "id": "synth_pay_003",
+        "subject": "Immediate Funds Transfer Required",
+        "body": "I’m in meetings all day and can’t be reached by phone. Please prioritize this wire.\n\nSend $92,300 to:\nBank: MetroLine Commercial\nRouting: 021-66411\nAccount: 8843201976\n\nThis relates to a settlement agreement that must close today. Email me once completed.",
+        "from_display": "Harold Kim",
+        "from_email": "[h.kim@executive-office.co](mailto:h.kim@executive-office.co)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "authority_impersonation",
+            "limited_contact",
+            "urgency"
+        ],
+        "notes": "Terse executive-style urgent transfer request."
+    },
+    {
+        "id": "synth_pay_004",
+        "subject": "Revised Remittance Instructions – Q1 Payment",
+        "body": "Dear Finance Team,\n\nFollowing our recent audit, our banking coordinates have changed. To remain compliant with regulatory guidelines, please remit the Q1 payment to the revised account.\n\nBank: Crestfield National\nRouting: 021-39821\nAccount: 9912038475\n\nKindly update your vendor records and confirm when done.",
+        "from_display": "Marco Delaine, Controller",
+        "from_email": "[m.delaine@crestfeld-industries.com](mailto:m.delaine@crestfeld-industries.com)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "audit_pretext",
+            "account_change_request",
+            "formal_tone"
+        ],
+        "notes": "Audit-based justification for banking change."
+    },
+    {
+        "id": "synth_pay_005",
+        "subject": "Payroll Account Update Confirmation",
+        "body": "Hello,\n\nDue to a payroll system upgrade, my direct deposit information has changed. Please update my salary deposit account before the next cycle.\n\nBank: Harbor State Credit\nRouting: 021-77520\nAccount: 4300192856\n\nConfirm once updated to avoid any delay.",
+        "from_display": "Renee Wallace",
+        "from_email": "[r.wallace@hr-portal-corp.net](mailto:r.wallace@hr-portal-corp.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "payroll_diversion",
+            "system_upgrade_pretext",
+            "urgency"
+        ],
+        "notes": "Payroll redirection attempt."
+    },
+    {
+        "id": "synth_pay_006",
+        "subject": "Attorney Escrow Transfer – Immediate",
+        "body": "Please process the escrow transfer discussed in yesterday’s executive call.\n\nAmount: $375,000\nBank: Sterling Equity Bank\nRouting: 021-99031\nAccount: 6728401935\n\nThis is under strict NDA. Handle discreetly and confirm once funds are sent.",
+        "from_display": "Patricia G. Nolan, Esq.",
+        "from_email": "[p.nolan@law-chambersllp.net](mailto:p.nolan@law-chambersllp.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "legal_impersonation",
+            "confidentiality",
+            "high_value_wire"
+        ],
+        "notes": "Law firm impersonation requesting escrow wire."
+    },
+    {
+        "id": "synth_pay_007",
+        "subject": "Final Notice: Outstanding Invoice 8841",
+        "body": "Dear Accounts Team,\n\nOur records show Invoice 8841 for $12,880 remains unpaid. To avoid late fees, please remit immediately to the account listed below.\n\nBank: BlueRidge Commercial\nRouting: 021-44129\nAccount: 2088475612\n\nWe appreciate your prompt attention.",
+        "from_display": "Invoicing Dept.",
+        "from_email": "[accounts@bluerldge-logistics.com](mailto:accounts@bluerldge-logistics.com)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "invoice_pressure",
+            "lookalike_domain",
+            "deadline_threat"
+        ],
+        "notes": "Vendor impersonation with late fee pressure."
+    },
+    {
+        "id": "synth_pay_008",
+        "subject": "Vendor Portal Banking Update Required",
+        "body": "Hello,\n\nWe have updated our vendor portal with new remittance details following a banking consolidation. Please disregard prior instructions.\n\nBank: Northern Axis Bank\nRouting: 021-32019\nAccount: 5612098734\n\nKindly update your system before releasing the April payment.",
+        "from_display": "Vendor Services",
+        "from_email": "[support@norhernaxis-supply.net](mailto:support@norhernaxis-supply.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "vendor_portal_spoof",
+            "account_change_request"
+        ],
+        "notes": "Vendor portal pretext for bank change."
+    },
+    {
+        "id": "synth_pay_009",
+        "subject": "Board-Approved Transfer – Execute Today",
+        "body": "This has been cleared by the board. I need the wire completed before markets close.\n\nSend $610,000 to:\nBank: Horizon Trust Bank\nRouting: 021-87412\nAccount: 9981234507\n\nReply with confirmation and transaction reference.",
+        "from_display": "Elliot Brandt",
+        "from_email": "[e.brandt@horizon-corp-exec.com](mailto:e.brandt@horizon-corp-exec.com)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "authority_impersonation",
+            "market_deadline_pressure"
+        ],
+        "notes": "Executive authority with market close urgency."
+    },
+    {
+        "id": "synth_pay_010",
+        "subject": "Re: Urgent Payment Realignment",
+        "body": "Our treasury team has requested immediate redirection of your pending $47,200 payment.\n\nBank: Pacific Crest Bank\nRouting: 021-22903\nAccount: 7312098456\n\nPlease ensure this update is reflected in your ERP before processing.",
+        "from_display": "Treasury Operations",
+        "from_email": "[treasury@pacifc-crestgroup.net](mailto:treasury@pacifc-crestgroup.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "account_change_request",
+            "internal_team_impersonation"
+        ],
+        "notes": "Treasury impersonation with ERP reference."
+    },
+    {
+        "id": "synth_pay_011",
+        "subject": "Settlement Funds Required – Today Only",
+        "body": "Dear Finance,\n\nWe have reached a confidential settlement requiring immediate funding.\n\nTransfer $129,880 to:\nBank: Granite Hill Bank\nRouting: 021-88341\nAccount: 4402198765\n\nThis must not be delayed or discussed externally.",
+        "from_display": "CEO Office",
+        "from_email": "[office@granitehll-capital.net](mailto:office@granitehll-capital.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "confidentiality",
+            "legal_pretext",
+            "authority_impersonation"
+        ],
+        "notes": "Settlement-based confidential transfer."
+    },
+    {
+        "id": "synth_pay_012",
+        "subject": "Revised ACH Details – Immediate Attention",
+        "body": "Please update our ACH information due to migration to a new financial institution.\n\nBank: Redwood Alliance Bank\nRouting: 021-66432\nAccount: 5559832104\n\nApply this change to all future payments starting this week.",
+        "from_display": "Finance Department",
+        "from_email": "[finance@redwod-alliance.com](mailto:finance@redwod-alliance.com)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "account_change_request",
+            "bank_migration_pretext"
+        ],
+        "notes": "ACH redirection through banking migration."
+    },
+    {
+        "id": "synth_pay_013",
+        "subject": "Quarter-End Transfer Approval",
+        "body": "As we close the quarter, we must release the advance payment discussed earlier.\n\nAmount: $210,400\nBank: Summit Ridge Bank\nRouting: 021-44587\nAccount: 7623459081\n\nPlease handle today to meet reporting deadlines.",
+        "from_display": "Chief Financial Officer",
+        "from_email": "[cfo@summitridge-holdlngs.net](mailto:cfo@summitridge-holdlngs.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "quarter_end_pressure",
+            "authority_impersonation"
+        ],
+        "notes": "Quarter-end reporting urgency."
+    },
+    {
+        "id": "synth_pay_014",
+        "subject": "Overdue Vendor Payment – Action Needed",
+        "body": "Dear Accounts,\n\nYour recent payment was returned due to closed banking coordinates. Please resend to the updated account below.\n\nBank: Fairview National\nRouting: 021-29874\nAccount: 8876201934\n\nKindly confirm once reissued.",
+        "from_display": "Vendor Relations",
+        "from_email": "[vendors@fairvew-industrial.net](mailto:vendors@fairvew-industrial.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "returned_payment_pretext",
+            "account_change_request"
+        ],
+        "notes": "Claim of returned payment to justify change."
+    },
+    {
+        "id": "synth_pay_015",
+        "subject": "Confidential Disbursement Instruction",
+        "body": "I require your assistance with a private disbursement today.\n\nWire $158,600 to:\nBank: Oakridge Trust\nRouting: 021-73820\nAccount: 9920187345\n\nDo not include this in routine reporting until further notice.",
+        "from_display": "Executive Director",
+        "from_email": "[director@oakridge-exec.net](mailto:director@oakridge-exec.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "confidentiality",
+            "authority_impersonation"
+        ],
+        "notes": "Private disbursement framing."
+    },
+    {
+        "id": "synth_pay_016",
+        "subject": "Immediate Transfer for Equipment Purchase",
+        "body": "Our supplier requires immediate prepayment to secure inventory.\n\nBank: Silverline Commercial\nRouting: 021-59310\nAccount: 6009182734\n\nPlease send $73,500 before 1 PM and confirm.",
+        "from_display": "Operations Manager",
+        "from_email": "[ops@silverlne-equipment.net](mailto:ops@silverlne-equipment.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "supplier_pretext",
+            "urgency"
+        ],
+        "notes": "Equipment supplier prepayment request."
+    },
+    {
+        "id": "synth_pay_017",
+        "subject": "Revised Legal Trust Account Details",
+        "body": "Due to restructuring of our trust accounts, please update remittance instructions.\n\nBank: Kingsport Financial\nRouting: 021-88473\nAccount: 4738291056\n\nFuture retainers should be directed here.",
+        "from_display": "Anderson & Cole LLP",
+        "from_email": "[accounts@andersoncole-llp.net](mailto:accounts@andersoncole-llp.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "law_firm_impersonation",
+            "account_change_request"
+        ],
+        "notes": "Law firm trust account update."
+    },
+    {
+        "id": "synth_pay_018",
+        "subject": "Wire Authorization – Priority",
+        "body": "Authorize transfer of $305,900 to close today’s agreement.\n\nBank: Bridgepoint National\nRouting: 021-40298\nAccount: 7812904635\n\nTime-sensitive. Confirm once executed.",
+        "from_display": "Chairman",
+        "from_email": "[chair@bridgepiont-capital.net](mailto:chair@bridgepiont-capital.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "authority_impersonation",
+            "deadline_pressure"
+        ],
+        "notes": "Chairman impersonation with urgency."
+    },
+    {
+        "id": "synth_pay_019",
+        "subject": "Vendor Account Update – Required for Payment Release",
+        "body": "Dear Team,\n\nWe recently migrated to a new treasury platform. Please update our bank details before releasing pending funds.\n\nBank: Highland Crest Bank\nRouting: 021-50984\nAccount: 2093847561\n\nConfirm once reflected in your records.",
+        "from_display": "Accounts Receivable",
+        "from_email": "[ar@highlandcrest-suplly.net](mailto:ar@highlandcrest-suplly.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "system_migration_pretext",
+            "account_change_request"
+        ],
+        "notes": "Treasury platform migration excuse."
+    },
+    {
+        "id": "synth_pay_020",
+        "subject": "Time-Sensitive Investment Transfer",
+        "body": "This opportunity closes within hours. We must fund immediately.\n\nWire $480,000 to:\nBank: Meridian Equity Bank\nRouting: 021-64128\nAccount: 8812345670\n\nKeep this confidential until finalized.",
+        "from_display": "Chief Strategy Officer",
+        "from_email": "[cso@meridan-equity.net](mailto:cso@meridan-equity.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "investment_pretext",
+            "confidentiality",
+            "urgency"
+        ],
+        "notes": "Investment opportunity urgency."
+    },
+    {
+        "id": "synth_pay_021",
+        "subject": "Corrected Payment Coordinates",
+        "body": "Apologies for the confusion. Our previous banking information was entered incorrectly.\n\nPlease remit to:\nBank: Atlantic Summit Bank\nRouting: 021-77290\nAccount: 3339847510\n\nKindly confirm once corrected.",
+        "from_display": "Vendor Accounting",
+        "from_email": "[acct@atlntic-summit.com](mailto:acct@atlntic-summit.com)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "error_correction_pretext",
+            "account_change_request"
+        ],
+        "notes": "Correction narrative for bank detail swap."
+    },
+    {
+        "id": "synth_pay_022",
+        "subject": "Immediate Transfer – Legal Escrow",
+        "body": "Please fund escrow account as instructed during executive briefing.\n\nBank: Crestview Holdings Bank\nRouting: 021-89123\nAccount: 4420193875\n\nFunds must be deposited today.",
+        "from_display": "Legal Affairs",
+        "from_email": "[legal@crestvew-holdings.net](mailto:legal@crestvew-holdings.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "legal_pretext",
+            "authority_impersonation",
+            "urgency"
+        ],
+        "notes": "Legal escrow urgency."
+    },
+    {
+        "id": "synth_pay_023",
+        "subject": "Invoice #9032 – Updated Bank Details",
+        "body": "Dear Accounts Payable,\n\nPlease note updated remittance details for Invoice #9032 totaling $22,410.\n\nBank: Pinnacle Harbor Bank\nRouting: 021-35670\nAccount: 6729084513\n\nApply immediately to avoid disruption.",
+        "from_display": "Billing Team",
+        "from_email": "[billing@pinnacleharbr-logistics.net](mailto:billing@pinnacleharbr-logistics.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "invoice_reference",
+            "account_change_request",
+            "lookalike_domain"
+        ],
+        "notes": "Invoice-specific bank change."
+    },
+    {
+        "id": "synth_pay_024",
+        "subject": "Payroll Adjustment – Direct Deposit Update",
+        "body": "Due to internal banking adjustments, please update the executive payroll deposit account.\n\nBank: Sterling Crest Bank\nRouting: 021-92041\nAccount: 9045612387\n\nThis must reflect before tomorrow’s payroll run.",
+        "from_display": "Executive HR",
+        "from_email": "[hr@sterlng-crestcorp.net](mailto:hr@sterlng-crestcorp.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "payroll_diversion",
+            "deadline_pressure"
+        ],
+        "notes": "Executive payroll redirect attempt."
+    },
+    {
+        "id": "synth_pay_025",
+        "subject": "Immediate Action Required: Vendor Banking Revision",
+        "body": "Dear Finance Team,\n\nWe have consolidated accounts under a new banking partner effective immediately. Please direct all outstanding balances to the account below.\n\nBank: Monarch Ridge Bank\nRouting: 021-47831\nAccount: 7812340986\n\nConfirm once updated to prevent payment delays.",
+        "from_display": "Accounts Department",
+        "from_email": "[accounts@monarchrldge-supply.net](mailto:accounts@monarchrldge-supply.net)",
+        "intent": "payment_fraud",
+        "generation_model": "chatgpt-5.2instant",
+        "tactics": [
+            "account_change_request",
+            "bank_consolidation_pretext"
+        ],
+        "notes": "Vendor consolidation banking update."
+    }
+]

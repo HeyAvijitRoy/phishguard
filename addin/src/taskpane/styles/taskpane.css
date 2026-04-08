@@ -1,0 +1,116 @@
+/* Base reset for taskpane */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.opg-container {
+  padding: 12px;
+  color: #111;
+}
+
+.opg-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.opg-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.opg-subtle {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.opg-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  background: #fff;
+}
+
+.opg-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.opg-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  font-size: 12px;
+}
+
+.opg-btn {
+  border: 1px solid #222;
+  background: #111;
+  color: white;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.opg-btn.secondary {
+  background: #fff;
+  color: #111;
+}
+
+.opg-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.opg-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.opg-table th,
+.opg-table td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  font-size: 13px;
+}
+
+.opg-muted {
+  opacity: 0.75;
+}
+
+/* Spinner for loading state */
+@keyframes opg-spin {
+  to { transform: rotate(360deg); }
+}
+
+.opg-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #D1D5DB;
+  border-top-color: #6B7280;
+  border-radius: 50%;
+  animation: opg-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* Pulse placeholder for loading state */
+@keyframes opg-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.opg-pulse {
+  animation: opg-pulse 1.4s ease-in-out infinite;
+}

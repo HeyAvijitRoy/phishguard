@@ -1,0 +1,9 @@
+{
+  "emails_analyzed": 100,
+  "total_outbound_requests_captured": 0,
+  "content_bearing_requests": 0,
+  "privacy_invariant_holds": true,
+  "captured_urls": [],
+  "methodology": "urllib.request + requests monkey-patch during local onnxruntime CPU inference",
+  "note": "onnxruntime Python CPU provider performs local inference only. Zero outbound requests expected and confirmed."
+}

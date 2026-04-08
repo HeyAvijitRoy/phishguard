@@ -1,0 +1,38 @@
+{
+  "stage1": {
+    "mean_ms": 40.6891,
+    "median_ms": 39.8378,
+    "p95_ms": 45.8207,
+    "p99_ms": 54.5142,
+    "max_ms": 249.8672,
+    "n_emails": 6621,
+    "note": "ONNX session.run() only, 3 warmup, CPU"
+  },
+  "stage2_at_tau_0.25": {
+    "mean_ms": 40.63,
+    "median_ms": 39.8718,
+    "p95_ms": 45.4955,
+    "p99_ms": 49.9973,
+    "max_ms": 96.3851,
+    "n_emails_triggered": 1564,
+    "trigger_rate": 0.236218
+  },
+  "stage2_at_tau_0.90": {
+    "mean_ms": 41.5874,
+    "median_ms": 40.3899,
+    "p95_ms": 46.8628,
+    "p99_ms": 52.995,
+    "max_ms": 356.1544,
+    "n_emails_triggered": 1539,
+    "trigger_rate": 0.232442
+  },
+  "combined_pipeline_at_tau_0.90": {
+    "mean_ms": 82.2422,
+    "median_ms": 80.7774,
+    "p95_ms": 89.6968,
+    "p99_ms": 104.0521,
+    "max_ms": 401.6034,
+    "n_emails": 1539,
+    "note": "Stage 1 + Stage 2 for gate-passed emails only"
+  }
+}
