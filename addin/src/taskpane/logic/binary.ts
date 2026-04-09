@@ -37,6 +37,10 @@ async function ensureSession(): Promise<ort.InferenceSession> {
 
   ort.env.wasm.wasmPaths = "/ort/";
 
+  // Temporary ONNX runtime inspection artifact: uncomment to verify browser-side WASM config.
+  // console.log("[PhishGuard ONNX] wasmPaths:", ort.env.wasm.wasmPaths);
+  // console.log("[PhishGuard ONNX] versions:", ort.env.versions);
+
   session = await ort.InferenceSession.create("/models/phish_binary.onnx", {
     executionProviders: ["wasm"]
   });

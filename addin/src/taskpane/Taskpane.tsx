@@ -74,7 +74,12 @@ export default function Taskpane() {
     setAnalyzing(true);
     setDebug("");
     setLatencyMs(null);
+
+    // [PhishGuard Latency Instrumentation START]
     const t0 = performance.now();
+    let didTriggerStage2 = false;
+    let riskTier: AnalysisResult["risk"] = "unknown";
+    // [PhishGuard Latency Instrumentation END]
 
     try {
       const w: any = window as any;
@@ -126,7 +131,8 @@ export default function Taskpane() {
           ],
           links
         };
-
+          
+        riskTier = computed.risk; // For latency logging
         setResult(computed);
 
         const hashed = await hashId(email.messageId || "");
@@ -136,6 +142,7 @@ export default function Taskpane() {
         return;
       }
 
+      didTriggerStage2 = true; // For latency instrumentation
       const features = computeFeatures(email.subject, email.bodyText, links, email.fromDomain);
       const auth = getAuthSignals(email.internetHeaders);
       const thread = getThreadSignals(email.bodyText, email.fromName, email.fromEmail);
@@ -160,6 +167,7 @@ export default function Taskpane() {
         links
       };
 
+      riskTier = computed.risk; // For latency logging
       setResult(computed);
 
       const hashed = await hashId(email.messageId || "");
@@ -170,7 +178,14 @@ export default function Taskpane() {
       setDebug((d) => d + `\nEXCEPTION: ${e?.message ?? String(e)}`);
       console.error(e);
     } finally {
-      setLatencyMs(Math.round(performance.now() - t0));
+      // [PhishGuard Latency Instrumentation START]
+      const t1 = performance.now();
+      console.log(
+        `[PhishGuard Latency] ${(t1 - t0).toFixed(1)} ms | stage2_triggered: ${didTriggerStage2} | risk: ${riskTier}`
+      );
+      // [PhishGuard Latency Instrumentation END]
+
+      setLatencyMs(Math.round(t1 - t0));
       setAnalyzing(false);
     }
   }

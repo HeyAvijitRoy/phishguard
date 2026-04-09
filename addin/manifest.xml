@@ -6,7 +6,7 @@
           xsi:type="MailApp">
 
   <Id>6c5a1c1f-6f3b-4a0b-a84a-1a0d22c1a111</Id>
-  <Version>0.1.0.0</Version>
+  <Version>0.1.0.1</Version>
   <ProviderName>Outlook Phish Guard</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Outlook Phish Guard"/>
@@ -67,6 +67,7 @@
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
                     <SourceLocation resid="opg.taskpaneUrl"/>
+                    <TaskpaneId>PhishGuard.ReadPane</TaskpaneId>
                     <SupportsPinning>true</SupportsPinning>
                   </Action>
                 </Control>
