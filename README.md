@@ -90,6 +90,7 @@ phishguard/
 ├── evaluation/
 │   ├── results/                    Canonical JSON/CSV outputs
 │   └── figures/                    Generated PDF figures
+|   └── privacy_audit_browser.txt   Network audit log
 │
 ├── docs/
 │   ├── UI_TESTING_GUIDE.md         Add-in setup and testing walkthrough
