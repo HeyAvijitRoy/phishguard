@@ -15,7 +15,7 @@ Usage:
       --canary-body "PHISHGUARD_CANARY_BODY_29C8D4 unique payroll token"
 
 Optional:
-  --report privacy_audit_canary_report.json
+  --report privacy_audit_canary_report.jsonl
 
 Example:
     python evaluation/check_canary_leakage.py --flows evaluation/privacy_audit_browser.mitm --canary-subject "PHISHGUARD_CANARY_SUBJECT_7F3A91" --canary-body "PHISHGUARD_CANARY_BODY_29C8D4 unique payroll token" --report evaluation/privacy_audit_canary_report.json
@@ -213,7 +213,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--report",
-        default="privacy_audit_canary_report.json",
+        default="privacy_audit_canary_report.jsonl",
         help="Path to write the JSON report",
     )
 
