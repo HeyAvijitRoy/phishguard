@@ -1,0 +1,240 @@
+﻿{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [
+      "Summer plan!"
+    ],
+    "bodies": []
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [
+      "Quarterly Review PHISHGUARD_CANARY_SUBJECT_7F3A91"
+    ],
+    "bodies": []
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [
+      "Updated banking details for your account"
+    ],
+    "bodies": []
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [
+      "Quick favor needed"
+    ],
+    "bodies": []
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [
+      "Last chance: 40% off expires tonight"
+    ],
+    "bodies": []
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [
+      "Q3 team meeting agenda attached"
+    ],
+    "bodies": []
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [
+      "Your Microsoft 365 account will be suspended in 24 hours"
+    ],
+    "bodies": []
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [],
+    "bodies": [
+      "Microsoft Account Security Team"
+    ]
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [],
+    "bodies": [
+      "Budget planning for Q3 initiatives"
+    ]
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [],
+    "bodies": [
+      "Account: 9034512876"
+    ]
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [],
+    "bodies": [
+      "Miami"
+    ]
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [],
+    "bodies": [
+      "PHISHGUARD_CANARY_BODY_29C8D4"
+    ]
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [],
+    "bodies": [
+      " .00 additional"
+    ]
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [],
+    "bodies": [
+      "Any plans for summer"
+    ]
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
+{
+  "flow_file": "evaluation\\privacy_audit_browser.mitm",
+  "passed": true,
+  "verdict": "PASS",
+  "flows_inspected": 653,
+  "canaries_tested": 1,
+  "canary_inputs": {
+    "subjects": [],
+    "bodies": [
+      "Thursday at 2pm in Conference"
+    ]
+  },
+  "host_filters": [],
+  "matches_found": 0,
+  "matches": []
+}
