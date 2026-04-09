@@ -26,6 +26,8 @@ Last updated: 2026-03-22
 | Test benign | 5,065 | `evaluation/results/binary_eval_v2.json` |
 | Intent label method | Keyword-derived weak labels | `ml/build_dataset.py:weak_label_intents` |
 | Ham intent labels | All-zero by construction | see `ml/build_dataset.py` |
+| Exact duplicates removed | 6,182 | `ml/build_dataset.py`, `ml/data_processed/stats.json` |
+| Post-dedup corpus size | 33,105 | `ml/data_processed/stats.json` |
 
 ---
 
@@ -76,7 +78,7 @@ Last updated: 2026-03-22
 | System | Precision | Recall | F1 | FPR | Stage 1 Latency |
 |--------|-----------|--------|----|-----|-----------------|
 | TF-IDF + Logistic Regression | 0.9805 | 0.9049 | 0.9412 | 0.55% | 0.046 ms |
-| TF-IDF + LinearSVC | 0.9866 | 0.9467 | 0.9662 | 0.39% | 0.042 ms |
+| TF-IDF + SVM (LinearSVC) | 0.9866 | 0.9467 | 0.9662 | 0.39% | 0.042 ms |
 | ONNX non-staged (no gate) | 0.9866 | 0.9916 | 0.9891 | 0.41% | 44.8 ms |
 | PhishGuard staged (τ = 0.25) | **0.9866** | **0.9916** | **0.9891** | **0.41%** | **40.7 ms** |
 
@@ -146,6 +148,27 @@ Source: `evaluation/results/full_pipeline_latency.json`, `evaluation/results/sta
 
 ---
 
+## Browser Cold-Start Latency (Deployed Add-in)
+
+Measurement methodology: `performance.now()` wall-clock instrumentation
+in the deployed Outlook add-in taskpane. Every analysis is a cold-start
+event because the Office.js taskpane lifecycle resets module state on
+each email selection in non-pinned deployments.
+
+| Stage | Latency (cold start) |
+|-------|----------------------|
+| Stage 1 only (non-pinned) | ~3.0 s |
+| Full pipeline (non-pinned) | ~5.2 s |
+
+Source: Browser DevTools console, `[PhishGuard Latency]` log entries,
+4 emails measured in deployed taskpane.
+
+Note: These figures represent WASM initialization + model loading cost,
+not inference computation. Admin-enforced pinning eliminates this overhead
+in enterprise deployment.
+
+---
+
 ## Privacy Audit
 
 | Metric | Result |
@@ -161,6 +184,22 @@ before any model imports; all outbound HTTP calls and payload contents recorded.
 Source: `evaluation/results/privacy_audit.json`
 
 ---
+
+## Browser-Path Privacy Audit (Canary Scan)
+
+| Metric | Result |
+|--------|--------|
+| mitmproxy flows inspected | 653 |
+| Canary tests run | 15 |
+| Canary matches found | 0 |
+| Verdict | PASS |
+
+Canaries included: synthetic high-entropy markers
+(PHISHGUARD_CANARY_SUBJECT_7F3A91, PHISHGUARD_CANARY_BODY_29C8D4)
+and natural subject/body fragments from audited emails spanning
+benign and phishing categories.
+
+Source: `evaluation/privacy_audit_canary_report.jsonl`
 
 ## Adversarial Evaluation (LLM-Generated Phishing, τ = 0.25)
 
