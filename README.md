@@ -88,9 +88,13 @@ phishguard/
 │   └── export/onnx/                Trained ONNX models + tokenizer files
 │
 ├── evaluation/
-│   ├── results/                    Canonical JSON/CSV outputs
-│   └── figures/                    Generated PDF figures
-|   └── privacy_audit_browser.txt   Network audit log
+│   ├── results/                          Canonical JSON/CSV outputs
+│   └── figures/                          Generated PDF figures
+|   └── privacy_audit_browser.txt         Network audit log
+|   └── check_canary_leakage.py           Canary Leak Checker Script
+|   └── check_canary.md                   Canary script runbook
+|   └── export_mitm_text_summary.py       MITM Flow file summary exporter script
+|   └── privacy_audit_canary_report.jsonl Canary Search Result
 │
 ├── docs/
 │   ├── UI_TESTING_GUIDE.md         Add-in setup and testing walkthrough
