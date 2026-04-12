@@ -129,7 +129,7 @@ def main():
     canonical = {}
     for tau_val in sorted(CANONICAL_TAUS):
         tau_idx = THRESHOLDS.index(tau_val)
-        label   = "research/SOUPS operating point" if tau_val == 0.25 else "production deployment operating point"
+        label   = "research/ operating point" if tau_val == 0.25 else "production deployment operating point"
         canonical[f"tau_{tau_val:.2f}"] = {
             "stage2_trigger_rate": trigger_rates[tau_idx],
             "stage1_only_rate":    stage1_rates[tau_idx],
