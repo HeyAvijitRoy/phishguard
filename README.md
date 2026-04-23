@@ -255,7 +255,7 @@ Derived from the **Zenodo Phishing Email Curated Datasets**
 To rebuild from scratch from a Zenodo download:
 
 ```powershell
-python ml\build_dataset.py --zenodo-path <path-to-zenodo-download>
+python ml\build_dataset.py --zenodo-dir <path-to-zenodo-download>
 ```
 
 Raw Zenodo files are not included to avoid redistributing a third-party
