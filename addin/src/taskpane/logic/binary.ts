@@ -1,28 +1,36 @@
-import * as ort from "onnxruntime-web";
+type OrtModule = typeof import("onnxruntime-web");
+type OrtSession = Awaited<ReturnType<OrtModule["InferenceSession"]["create"]>>;
+
+import { loadCachedModelBytes, loadCachedModelText, modelUrl } from "./modelCache";
 
 type Assets = {
   vocab: Map<string, number>;
 };
 
-let session: ort.InferenceSession | null = null;
+let ortPromise: Promise<OrtModule> | null = null;
+let session: OrtSession | null = null;
 let assets: Assets | null = null;
 
 const MAX_LEN = 256;
+const ORT_ROOT = "/ort/";
 
 function sigmoid(x: number) {
   return 1 / (1 + Math.exp(-x));
 }
 
 async function loadText(url: string): Promise<string> {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to load ${url}`);
-  return await res.text();
+  try {
+    return await loadCachedModelText(url.slice(url.lastIndexOf("/") + 1));
+  } catch (error) {
+    console.error(`[PhishGuard] Failed to load text asset: ${url}`, error);
+    throw error;
+  }
 }
 
 async function ensureAssets(): Promise<Assets> {
   if (assets) return assets;
 
-  const vocabText = await loadText("/models/vocab.txt");
+  const vocabText = await loadText(modelUrl("vocab.txt"));
   const vocab = new Map<string, number>();
   vocabText.split(/\r?\n/).forEach((tok, idx) => {
     if (tok) vocab.set(tok.trim(), idx);
@@ -32,20 +40,29 @@ async function ensureAssets(): Promise<Assets> {
   return assets;
 }
 
-async function ensureSession(): Promise<ort.InferenceSession> {
+async function ensureSession(): Promise<OrtSession> {
   if (session) return session;
 
-  ort.env.wasm.wasmPaths = "/ort/";
+  const ort = await getOrt();
+  ort.env.wasm.wasmPaths = ORT_ROOT;
 
-  // Temporary ONNX runtime inspection artifact: uncomment to verify browser-side WASM config.
-  // console.log("[PhishGuard ONNX] wasmPaths:", ort.env.wasm.wasmPaths);
-  // console.log("[PhishGuard ONNX] versions:", ort.env.versions);
+  try {
+    session = await ort.InferenceSession.create(await loadCachedModelBytes("phish_binary.onnx"), {
+      executionProviders: ["wasm"]
+    });
+    return session;
+  } catch (error) {
+    console.error(`[PhishGuard] Failed to create binary ONNX session from ${modelUrl("phish_binary.onnx")}`, error);
+    throw error;
+  }
+}
 
-  session = await ort.InferenceSession.create("/models/phish_binary.onnx", {
-    executionProviders: ["wasm"]
-  });
+async function getOrt(): Promise<OrtModule> {
+  if (!ortPromise) {
+    ortPromise = import("onnxruntime-web");
+  }
 
-  return session;
+  return ortPromise;
 }
 
 function basicNormalize(text: string): string {
@@ -103,7 +120,8 @@ function wordpieceTokenize(text: string, vocab: Map<string, number>): string[] {
   return tokens;
 }
 
-function buildInputs(text: string, vocab: Map<string, number>) {
+async function buildFeeds(text: string, vocab: Map<string, number>) {
+  const ort = await getOrt();
   const clsId = vocab.get("[CLS]") ?? 101;
   const sepId = vocab.get("[SEP]") ?? 102;
   const padId = vocab.get("[PAD]") ?? 0;
@@ -139,23 +157,28 @@ export async function scoreBinaryPhish(subject: string, bodyText: string): Promi
   const text = basicNormalize(`${subject}\n${bodyText}`).slice(0, 8000);
   if (!text) return 0;
 
-  const feeds = buildInputs(text, a.vocab);
-  const outputs = await s.run(feeds);
+  const feeds = await buildFeeds(text, a.vocab);
 
-  const out = outputs["logits"] ?? Object.values(outputs)[0];
-  const raw = out.data as unknown;
-  const logits = Array.isArray(raw) ? raw.map((v) => Number(v)) : Array.from(raw as Float32Array);
+  try {
+    const outputs = await s.run(feeds);
+    const out = outputs["logits"] ?? Object.values(outputs)[0];
+    const raw = out.data as unknown;
+    const logits = Array.isArray(raw) ? raw.map((v) => Number(v)) : Array.from(raw as Float32Array);
 
-  let pPhish = 0;
-  if (logits.length === 1) {
-    pPhish = sigmoid(logits[0]);
-  } else {
-    const maxLogit = Math.max(...logits);
-    const exps = logits.map((v) => Math.exp(v - maxLogit));
-    const sum = exps.reduce((acc, v) => acc + v, 0);
-    const probs = exps.map((v) => v / sum);
-    pPhish = probs[1] ?? 0;
+    let pPhish = 0;
+    if (logits.length === 1) {
+      pPhish = sigmoid(logits[0]);
+    } else {
+      const maxLogit = Math.max(...logits);
+      const exps = logits.map((v) => Math.exp(v - maxLogit));
+      const sum = exps.reduce((acc, v) => acc + v, 0);
+      const probs = exps.map((v) => v / sum);
+      pPhish = probs[1] ?? 0;
+    }
+
+    return Math.max(0, Math.min(1, pPhish));
+  } catch (error) {
+    console.error("[PhishGuard] Binary model inference failed", error);
+    throw error;
   }
-
-  return Math.max(0, Math.min(1, pPhish));
 }

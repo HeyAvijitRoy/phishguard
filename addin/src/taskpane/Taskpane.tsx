@@ -12,8 +12,6 @@ import { getCurrentEmail } from "./logic/extractEmail";
 import { computeFeatures } from "./logic/features";
 import { scoreEmail } from "./logic/score";
 import { buildReasons } from "./logic/explain";
-import { computeNlpSignals } from "./logic/nlp";
-import { scoreBinaryPhish } from "./logic/binary";
 import { fuseSignals } from "./logic/fuse";
 import { hashId } from "./logic/hash";
 import { exportLogs, clearLogs, logAnalysis } from "./logic/log";
@@ -44,6 +42,27 @@ const EMPTY: AnalysisResult = {
 };
 
 const PHISH_GATE_THRESHOLD = 0.90;
+
+type AnalysisModules = {
+  computeNlpSignals: (subject: string, bodyText: string) => Promise<any>;
+  scoreBinaryPhish: (subject: string, bodyText: string) => Promise<number>;
+};
+
+let analysisModulesPromise: Promise<AnalysisModules> | null = null;
+
+function loadAnalysisModules(): Promise<AnalysisModules> {
+  if (!analysisModulesPromise) {
+    analysisModulesPromise = Promise.all([
+      import("./logic/nlp"),
+      import("./logic/binary")
+    ]).then(([nlp, binary]) => ({
+      computeNlpSignals: nlp.computeNlpSignals,
+      scoreBinaryPhish: binary.scoreBinaryPhish
+    }));
+  }
+
+  return analysisModulesPromise;
+}
 
 export default function Taskpane() {
   const condition = useMemo(() => getConditionFromUrl(), []);
@@ -112,6 +131,7 @@ export default function Taskpane() {
 
       setDebug((d) => d + `\nlinksFound=${links.length}`);
 
+      const { scoreBinaryPhish, computeNlpSignals } = await loadAnalysisModules();
       const pPhish = await scoreBinaryPhish(email.subject, email.bodyText);
       setDebug((d) => d + `\nphishProb=${pPhish.toFixed(4)} gate=${PHISH_GATE_THRESHOLD}`);
 

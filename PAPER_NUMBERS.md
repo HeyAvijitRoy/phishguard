@@ -148,24 +148,28 @@ Source: `evaluation/results/full_pipeline_latency.json`, `evaluation/results/sta
 
 ---
 
-## Browser Cold-Start Latency (Deployed Add-in)
+## Browser-Side Wall-Clock Latency (Deployed Add-in)
 
-Measurement methodology: `performance.now()` wall-clock instrumentation
-in the deployed Outlook add-in taskpane. Every analysis is a cold-start
-event because the Office.js taskpane lifecycle resets module state on
-each email selection in non-pinned deployments.
+Measurement methodology: browser-side wall-clock instrumentation and
+deployment console logs from the hosted Outlook add-in taskpane in
+non-pinned hosting. The Office.js taskpane lifecycle resets module
+state on each email selection, so deployment latency reflects first-load
+asset fetch, runtime/session setup, and conditional Stage 2 execution.
 
-| Stage | Latency (cold start) |
-|-------|----------------------|
-| Stage 1 only (non-pinned) | ~3.0 s |
-| Full pipeline (non-pinned) | ~5.2 s |
+| Regime | Observed latency |
+|--------|------------------|
+| Initial first-load event | > 6 s |
+| Repeated Stage 1-only analyses | ~2.0 s |
+| Repeated Stage 2-triggered analyses (Full Pipeline) | ~3.3 s |
 
-Source: Browser DevTools console, `[PhishGuard Latency]` log entries,
-4 emails measured in deployed taskpane.
+Source: deployed taskpane console logs, including `[PhishGuard Latency]`
+entries and tokenization/runtime verification logs.
 
-Note: These figures represent WASM initialization + model loading cost,
-not inference computation. Admin-enforced pinning eliminates this overhead
-in enterprise deployment.
+Note: Subsequent analyses benefit from browser-cached model assets, but
+wall-clock latency remains dominated by taskpane/runtime overhead and
+session lifecycle behavior rather than isolated inference computation.
+Admin-enforced pinning is intended to recover warm-path behavior in
+enterprise deployment.
 
 ---
 

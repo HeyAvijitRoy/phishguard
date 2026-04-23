@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
@@ -7,9 +7,9 @@
 
   <Id>6c5a1c1f-6f3b-4a0b-a84a-1a0d22c1a111</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Outlook Phish Guard</ProviderName>
+  <ProviderName>Phish Guard Beta</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Outlook Phish Guard"/>
+  <DisplayName DefaultValue="Phish Guard Beta"/>
   <Description DefaultValue="Local phishing detection with explainable reasons."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>

@@ -1,11 +1,16 @@
-﻿/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const devCerts = require("office-addin-dev-certs");
 
-module.exports = async (env, argv) => {
-  const httpsOptions = await devCerts.getHttpsServerOptions();
+module.exports = async (env, options) => {
+  const isDevelopment = options.mode === "development";
+
+  // Only attempt to generate/install local certs if in development mode.
+  const httpsOptions = isDevelopment 
+    ? await devCerts.getHttpsServerOptions() 
+    : {};
 
   return {
     entry: {
@@ -39,16 +44,17 @@ module.exports = async (env, argv) => {
         chunks: ["taskpane"]
       }),
       new HtmlWebpackPlugin({
+        filename: "index.html",
+        template: path.resolve(__dirname, "src/taskpane/taskpane.html"),
+        chunks: ["taskpane"]
+      }),
+      new HtmlWebpackPlugin({
         filename: "support.html",
         template: path.resolve(__dirname, "src/support.html"),
         chunks: []
       }),
       new CopyWebpackPlugin({
         patterns: [
-          {
-            from: path.resolve(__dirname, "public"),
-            to: "."
-          },
           {
             from: path.resolve(__dirname, "assets"),
             to: "assets"
@@ -80,6 +86,9 @@ module.exports = async (env, argv) => {
       static: [
         {
           directory: path.join(__dirname, "dist")
+        },
+        {
+          directory: path.resolve(__dirname, "public")
         },
         {
           directory: path.resolve(__dirname, "node_modules/onnxruntime-web/dist"),

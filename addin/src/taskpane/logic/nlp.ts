@@ -1,62 +1,81 @@
-import * as ort from "onnxruntime-web";
 import type { NlpSignals } from "../../shared/types";
+type OrtModule = typeof import("onnxruntime-web");
+type OrtSession = Awaited<ReturnType<OrtModule["InferenceSession"]["create"]>>;
+
+import { loadCachedModelBytes, loadCachedModelJson, loadCachedModelText, modelUrl } from "./modelCache";
 
 type Assets = {
   vocab: Map<string, number>;
   labels: string[];
 };
 
-let session: ort.InferenceSession | null = null;
+let ortPromise: Promise<OrtModule> | null = null;
+let session: OrtSession | null = null;
 let assets: Assets | null = null;
 
 const MAX_LEN = 256;
+const ORT_ROOT = "/ort/";
 
 function sigmoid(x: number) {
   return 1 / (1 + Math.exp(-x));
 }
 
 async function loadText(url: string): Promise<string> {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to load ${url}`);
-  return await res.text();
+  try {
+    return await loadCachedModelText(url.slice(url.lastIndexOf("/") + 1));
+  } catch (error) {
+    console.error(`[PhishGuard] Failed to load text asset: ${url}`, error);
+    throw error;
+  }
 }
 
 async function loadJson<T>(url: string): Promise<T> {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to load ${url}`);
-  return await res.json();
+  try {
+    return await loadCachedModelJson<T>(url.slice(url.lastIndexOf("/") + 1));
+  } catch (error) {
+    console.error(`[PhishGuard] Failed to load JSON asset: ${url}`, error);
+    throw error;
+  }
 }
 
 async function ensureAssets(): Promise<Assets> {
   if (assets) return assets;
 
-  const vocabText = await loadText("/models/vocab.txt");
+  const vocabText = await loadText(modelUrl("vocab.txt"));
   const vocab = new Map<string, number>();
   vocabText.split(/\r?\n/).forEach((tok, idx) => {
     if (tok) vocab.set(tok.trim(), idx);
   });
 
-  const labels = await loadJson<string[]>("/models/labels.json");
+  const labels = await loadJson<string[]>(modelUrl("labels.json"));
 
   assets = { vocab, labels };
   return assets;
 }
 
-async function ensureSession(): Promise<ort.InferenceSession> {
+async function ensureSession(): Promise<OrtSession> {
   if (session) return session;
 
-  // Use local wasm copied into dist/ort
-  ort.env.wasm.wasmPaths = "/ort/";
+  const ort = await getOrt();
+  ort.env.wasm.wasmPaths = ORT_ROOT;
 
-  // Temporary ONNX runtime inspection artifact: uncomment to verify browser-side WASM config.
-  // console.log("[PhishGuard ONNX] wasmPaths:", ort.env.wasm.wasmPaths);
-  // console.log("[PhishGuard ONNX] versions:", ort.env.versions);
+  try {
+    session = await ort.InferenceSession.create(await loadCachedModelBytes("phish_intent.onnx"), {
+      executionProviders: ["wasm"]
+    });
+    return session;
+  } catch (error) {
+    console.error(`[PhishGuard] Failed to create intent ONNX session from ${modelUrl("phish_intent.onnx")}`, error);
+    throw error;
+  }
+}
 
-  session = await ort.InferenceSession.create("/models/phish_intent.onnx", {
-    executionProviders: ["wasm"]
-  });
+async function getOrt(): Promise<OrtModule> {
+  if (!ortPromise) {
+    ortPromise = import("onnxruntime-web");
+  }
 
-  return session;
+  return ortPromise;
 }
 
 function basicNormalize(text: string): string {
@@ -68,7 +87,6 @@ function basicNormalize(text: string): string {
     .toLowerCase();
 }
 
-// Minimal WordPiece tokenizer (uncased) for BERT-style vocab.txt
 function wordpieceTokenize(text: string, vocab: Map<string, number>): string[] {
   const unk = "[UNK]";
   const tokens: string[] = [];
@@ -80,7 +98,6 @@ function wordpieceTokenize(text: string, vocab: Map<string, number>): string[] {
       continue;
     }
 
-    // Greedy WordPiece
     let start = 0;
     const subTokens: string[] = [];
     let isBad = false;
@@ -116,7 +133,8 @@ function wordpieceTokenize(text: string, vocab: Map<string, number>): string[] {
   return tokens;
 }
 
-function buildInputs(text: string, vocab: Map<string, number>) {
+async function buildInputs(text: string, vocab: Map<string, number>) {
+  const ort = await getOrt();
   const clsId = vocab.get("[CLS]") ?? 101;
   const sepId = vocab.get("[SEP]") ?? 102;
   const padId = vocab.get("[PAD]") ?? 0;
@@ -175,35 +193,38 @@ export async function computeNlpSignals(subject: string, bodyText: string): Prom
     };
   }
 
-  const { feeds, unkCount, tokenCount } = buildInputs(text, a.vocab);
-  const outputs = await s.run(feeds);
-  console.log("ONNX output keys:", Object.keys(outputs));
+  const { feeds, unkCount, tokenCount } = await buildInputs(text, a.vocab);
 
-  const out = outputs["logits"] ?? Object.values(outputs)[0];
-  const raw = out.data as unknown;
-  const logits = Array.isArray(raw)
-    ? raw.map((v) => Number(v))
-    : Array.from(raw as Float32Array);
+  try {
+    const outputs = await s.run(feeds);
+    const out = outputs["logits"] ?? Object.values(outputs)[0];
+    const raw = out.data as unknown;
+    const logits = Array.isArray(raw)
+      ? raw.map((v) => Number(v))
+      : Array.from(raw as Float32Array);
 
-  console.log("logits sample:", logits.slice(0, 8));
-  const unkRatio = tokenCount > 0 ? unkCount / tokenCount : 0;
-  console.log("tokenization unk ratio:", unkRatio, "unkCount:", unkCount, "tokenCount:", tokenCount);
+    const unkRatio = tokenCount > 0 ? unkCount / tokenCount : 0;
+    console.log("[PhishGuard] tokenization stats", { unkRatio, unkCount, tokenCount, outputKeys: Object.keys(outputs) });
 
-  const probs = logits.map(sigmoid);
-  const idx = (name: string) => Math.max(0, a.labels.indexOf(name));
+    const probs = logits.map(sigmoid);
+    const idx = (name: string) => Math.max(0, a.labels.indexOf(name));
 
-  const intentCredential = probs[idx("credential")] ?? 0;
-  const intentPayment = probs[idx("payment")] ?? 0;
-  const intentThreat = probs[idx("threat")] ?? 0;
-  const intentImpersonation = probs[idx("impersonation")] ?? 0;
+    const intentCredential = probs[idx("credential")] ?? 0;
+    const intentPayment = probs[idx("payment")] ?? 0;
+    const intentThreat = probs[idx("threat")] ?? 0;
+    const intentImpersonation = probs[idx("impersonation")] ?? 0;
 
-  const semanticSuspicion = Math.max(intentCredential, intentPayment, intentThreat, intentImpersonation);
+    const semanticSuspicion = Math.max(intentCredential, intentPayment, intentThreat, intentImpersonation);
 
-  return {
-    intentCredential,
-    intentPayment,
-    intentThreat,
-    intentImpersonation,
-    semanticSuspicion
-  };
+    return {
+      intentCredential,
+      intentPayment,
+      intentThreat,
+      intentImpersonation,
+      semanticSuspicion
+    };
+  } catch (error) {
+    console.error("[PhishGuard] Intent model inference failed", error);
+    throw error;
+  }
 }

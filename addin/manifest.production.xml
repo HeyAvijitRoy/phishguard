@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xsi:type="MailApp">
+
+  <Id>7793fe33-bceb-488c-b808-c0d695c073d2</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Phish Guard Beta</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+
+  <DisplayName DefaultValue="Phish Guard Beta"/>
+  <Description DefaultValue="Local phishing detection with explainable reasons."/>
+
+  <IconUrl DefaultValue="[url]/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="[url]/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="[url]/support.html"/>
+
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.8"/>
+    </Sets>
+  </Requirements>
+
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="[url]/taskpane.html"/>
+        <RequestedHeight>450</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+
+  <Permissions>ReadItem</Permissions>
+
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  </Rule>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides"
+                    xsi:type="VersionOverridesV1_0">
+
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.8">
+        <bt:Set Name="Mailbox"/>
+      </bt:Sets>
+    </Requirements>
+
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="opg2.group">
+                <Label resid="opg2.groupLabel"/>
+                <Control xsi:type="Button" id="opg2.openTaskpane">
+                  <Label resid="opg2.buttonLabel"/>
+                  <Supertip>
+                    <Title resid="opg2.buttonLabel"/>
+                    <Description resid="opg2.buttonDesc"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16"/>
+                    <bt:Image size="32" resid="icon32"/>
+                    <bt:Image size="80" resid="icon80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="opg2.taskpaneUrl"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="icon16" DefaultValue="[url]/assets/icon-16.png"/>
+        <bt:Image id="icon32" DefaultValue="[url]/assets/icon-32.png"/>
+        <bt:Image id="icon80" DefaultValue="[url]/assets/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="opg2.taskpaneUrl" DefaultValue="[url]/taskpane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="opg2.groupLabel" DefaultValue="Phish Guard"/>
+        <bt:String id="opg2.buttonLabel" DefaultValue="Analyze Email"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="opg2.buttonDesc" DefaultValue="Analyze email for phishing indicators."/>
+      </bt:LongStrings>
+    </Resources>
+
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1"
+                      xsi:type="VersionOverridesV1_1">
+
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.8">
+          <bt:Set Name="Mailbox"/>
+        </bt:Sets>
+      </Requirements>
+
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <DesktopFormFactor>
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="opg2.group">
+                  <Label resid="opg2.groupLabel"/>
+                  <Control xsi:type="Button" id="opg2.openTaskpane">
+                    <Label resid="opg2.buttonLabel"/>
+                    <Supertip>
+                      <Title resid="opg2.buttonLabel"/>
+                      <Description resid="opg2.buttonDesc"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="icon16"/>
+                      <bt:Image size="32" resid="icon32"/>
+                      <bt:Image size="80" resid="icon80"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="opg2.taskpaneUrl"/>
+                      <SupportsPinning>true</SupportsPinning>
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+
+      <Resources>
+        <bt:Images>
+          <bt:Image id="icon16" DefaultValue="[url]/assets/icon-16.png"/>
+          <bt:Image id="icon32" DefaultValue="[url]/assets/icon-32.png"/>
+          <bt:Image id="icon80" DefaultValue="[url]/assets/icon-80.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="opg2.taskpaneUrl" DefaultValue="[url]/taskpane.html"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="opg2.groupLabel" DefaultValue="Phish Guard"/>
+          <bt:String id="opg2.buttonLabel" DefaultValue="Analyze Email"/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="opg2.buttonDesc" DefaultValue="Analyze email for phishing indicators."/>
+        </bt:LongStrings>
+      </Resources>
+
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>

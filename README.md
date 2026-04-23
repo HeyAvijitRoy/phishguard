@@ -34,7 +34,9 @@ phishguard/
 ├── PAPER_NUMBERS.md                Canonical metric index → evaluation/results/
 │
 ├── addin/                          Outlook add-in (TypeScript + React)
-│   ├── manifest.xml                Office add-in manifest (sideload this)
+│   ├── manifest.xml                Local default manifest (same local target)
+│   ├── manifest.dev.xml            Local development sideload manifest
+│   ├── manifest.production.xml     Hosted enterprise deployment manifest
 │   ├── package.json
 │   ├── tsconfig.json
 │   ├── webpack.config.js
@@ -161,11 +163,25 @@ Server starts at `https://localhost:3000`.
 
 1. Open **Outlook Web** (`outlook.office.com`) or **New Outlook for Windows**.
 2. Go to **Settings → Add-ins → Manage add-ins → Add from file**.
-3. Upload `addin/manifest.xml`.
+3. Upload `addin/manifest.dev.xml` (or `addin/manifest.xml` if you keep it pointed to localhost).
 4. Open any email and click the **Outlook Phish Guard** button in the
    ribbon to open the taskpane.
 
-### Step 5 — Test
+### Step 5 — Enterprise production deployment (`[url]` placeholders)
+
+The artifact intentionally uses `[url]` placeholders in production-hosted paths.
+Before enterprise deployment, replace every `[url]` in `addin/manifest.production.xml`
+with your live HTTPS host.
+
+Also update the hosted model fallback in `addin/src/taskpane/logic/modelCache.ts`:
+
+- `REMOTE_MODEL_ROOT = "[url]/models"` must be replaced with your live model URL root.
+
+Use `addin/manifest.production.xml` for production rollout after replacement.
+`SupportsPinning` is already enabled in the production manifest; taskpane pinning
+is available when these URLs are valid and reachable.
+
+### Step 6 — Test
 
 Follow `docs/UI_TESTING_GUIDE.md` for a complete walkthrough.
 `docs/UI_TEST_EMAILS.md` provides curated test inputs with expected outcomes.

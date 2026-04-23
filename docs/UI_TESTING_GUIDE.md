@@ -30,6 +30,11 @@ deployed system behaves as described in the paper.
 
 ## Setup
 
+PhishGuard now includes two manifest variants inside `addin/`:
+
+- `manifest.dev.xml` for local testing on `https://localhost:3000`
+- `manifest.production.xml` for hosted enterprise deployment
+
 ### 1. Install Node dependencies
 
 From the root of the artifact bundle:
@@ -62,7 +67,6 @@ instructions.
 ### 3. Copy the ONNX models into the add-in
 
 ```powershell
-cd ../
 powershell -ExecutionPolicy Bypass -File .\scripts\sync-models.ps1
 ```
 
@@ -103,7 +107,7 @@ If you see SSL or certificate errors at this point, re-run `npm run dev-certs`.
 
 1. Open `https://outlook.office.com` and sign in.
 2. Click the settings gear → **Add-ins** → **Manage add-ins**.
-3. Click **Add from file** → **Browse** → select `addin/manifest.xml`.
+3. Click **Add from file** → **Browse** → select `addin/manifest.dev.xml`.
 4. Click **Add** to install.
 
 **New Outlook for Windows:**
@@ -111,13 +115,37 @@ If you see SSL or certificate errors at this point, re-run `npm run dev-certs`.
 1. Open New Outlook (the updated Windows 11 version, not classic Outlook).
 2. Click the settings gear → **Add-ins** → **Manage add-ins** →
    **Add from file**.
-3. Select `addin/manifest.xml` → click **Add**.
+3. Select `addin/manifest.dev.xml` → click **Add**.
 
 **Verify the sideload succeeded:**
 
 Open any email. In the message reading pane, look for the **Outlook Phish Guard**
 button in the top toolbar or ribbon. If you see it, the add-in loaded. Click it
 to open the taskpane.
+
+---
+
+## Enterprise production deployment (`[url]` placeholders)
+
+For artifact sharing and blind review, hosted links are intentionally written as
+`[url]`. Before production deployment, replace all `[url]` placeholders with your
+real HTTPS origin (for example, your enterprise CDN or static hosting domain).
+
+Use `addin/manifest.production.xml` for enterprise rollout and update all `[url]`
+entries so Outlook can load the hosted taskpane, assets, and support page.
+
+Also update hosted model fallback in `addin/src/taskpane/logic/modelCache.ts`:
+
+- `REMOTE_MODEL_ROOT = "[url]/models"` must point to your live model host
+
+If `[url]` is not replaced in production, expected failures include:
+
+- taskpane/content not loading from the manifest URLs
+- model fetch failures during analysis
+- taskpane pinning not being available in the deployed add-in context
+
+`SupportsPinning` is already enabled in the production manifest; taskpane pinning
+is available when these URLs are valid and reachable.
 
 ---
 
@@ -288,7 +316,7 @@ and requires no external knowledge beyond what `README.md` documents.
 - [ ] `npm run dev-certs` completes without errors
 - [ ] `sync-models.ps1` copies both `.onnx` files into `addin/public/models/`
 - [ ] `npm start` starts the dev server at `https://localhost:3000`
-- [ ] `addin/manifest.xml` sideloads successfully in Outlook
+- [ ] `addin/manifest.dev.xml` sideloads successfully in Outlook
 - [ ] Clicking Analyze on an email produces a result in the taskpane
 - [ ] A high-risk email (test A1) shows a red banner with reason labels
 - [ ] A routine email (test B1) shows no banner

@@ -1,5 +1,13 @@
 import type { AuthSignals, EmailFeatures, NlpSignals, ThreadSignals } from "../../shared/types";
-import { nlpToPoints } from "./nlp";
+
+function nlpToPoints(nlp: NlpSignals): number {
+  return (
+    nlp.intentCredential * 30 +
+    nlp.intentPayment * 25 +
+    nlp.intentThreat * 15 +
+    nlp.intentImpersonation * 10
+  );
+}
 
 export function fuseSignals(features: EmailFeatures, nlp: NlpSignals, auth?: AuthSignals, thread?: ThreadSignals) {
   return {

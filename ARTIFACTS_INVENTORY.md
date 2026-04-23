@@ -19,6 +19,7 @@ Total entries: 127
 |   |       icon-32.png
 |   |       icon-64.png
 |   |       icon-80.png
+|   |       icon-128.png
 |   |
 |   +---public
 |   |   \---models
@@ -27,6 +28,7 @@ Total entries: 127
 |   \---src
 |       |   index.tsx
 |       |   support.html
+|       |   global.d.ts
 |       |
 |       +---shared
 |       |       types.ts
