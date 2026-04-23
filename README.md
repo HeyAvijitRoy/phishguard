@@ -349,7 +349,7 @@ The privacy boundary is verified empirically; see
 ## Re-training from scratch
 
 ```powershell
-python ml\build_dataset.py --zenodo-path <path>
+python ml\build_dataset.py --zenodo-dir <path>
 python ml\train_phish_binary_full.py
 python ml\train_intent_full.py
 python ml\export_onnx.py
